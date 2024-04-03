@@ -49,7 +49,7 @@
 
             <section class="contact">
                 
-                <div v-for="contact in contacts" class="user card">
+                <div v-for="(contact, i) in contacts" @click="currentUserId = i" class="user card">
                     <div class="card-img">
                         <img :src="contact.avatar" alt="avatar-icon">
                     </div>
@@ -84,40 +84,12 @@
 
             <section class="message-box">
                 <div class="message-body flex flex-column">
-                    <div class="max-col-8 msg my-msg">
+
+                    <div v-for="message in contacts[currentUserId].messages" :class="message.status === 'sent' ? 'my-msg' : 'current-user-msg'" class="max-col-8 msg">
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate nemo sed provident at
-                            quis quidem officia excepturi fugit autem assumenda.
+                            {{ message.message }}
                         </p>
-                        <p>16:13</p>
-                    </div>
-                    <div class="max-col-8 msg current-user-msg">
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate nemo sed provident at
-                            quis quidem officia excepturi fugit autem assumenda.
-                        </p>
-                        <p>16:13</p>
-                    </div>
-                    <div class="max-col-8 msg current-user-msg">
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate nemo sed provident at
-                            quis quidem officia excepturi fugit autem assumenda.
-                        </p>
-                        <p>16:13</p>
-                    </div>
-                    <div class="max-col-8 msg my-msg">
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate nemo sed provident at
-                            quis quidem officia excepturi fugit autem assumenda.
-                        </p>
-                        <p>16:13</p>
-                    </div>
-                    <div class="max-col-8 msg my-msg">
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate nemo sed provident at
-                            quis quidem officia excepturi fugit autem assumenda.
-                        </p>
-                        <p>16:13</p>
+                        <p>{{ message.date.slice(11, 16) }}</p>
                     </div>
 
                 </div>

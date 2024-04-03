@@ -166,6 +166,7 @@ createApp({
           ],
         },
       ],
+      currentUserId:0
     };
   },
   methods: {
