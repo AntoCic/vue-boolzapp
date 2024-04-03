@@ -49,7 +49,7 @@
 
             <section class="contact">
                 
-                <div v-for="(contact, i) in contacts" @click="currentUserId = i" class="user card">
+                <div v-for="(contact, i) in contacts" @click="currentUserIndex = i" class="user card">
                     <div class="card-img">
                         <img :src="contact.avatar" alt="avatar-icon">
                     </div>
@@ -85,7 +85,7 @@
             <section class="message-box">
                 <div class="message-body flex flex-column">
 
-                    <div v-for="message in contacts[currentUserId].messages" :class="message.status === 'sent' ? 'my-msg' : 'current-user-msg'" class="max-col-8 msg">
+                    <div v-for="message in contacts[currentUserIndex].messages" :class="message.status === 'sent' ? 'my-msg' : 'current-user-msg'" class="max-col-8 msg">
                         <p>
                             {{ message.message }}
                         </p>

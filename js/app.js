@@ -166,24 +166,41 @@ createApp({
           ],
         },
       ],
-      currentUserId: 0,
+      currentUserIndex: 0,
+      userResponseIndex: 0,
+      intervallo: null,
     };
   },
   methods: {
-    sendMsg(event) {
+    getDataNow() {
       const d = new Date();
       const day = String(d.getDate()).padStart(2, "0");
       const month = String(d.getMonth() + 1).padStart(2, "0");
       const year = String(d.getFullYear());
       const time = d.toLocaleTimeString();
-      const fullDate = `${day}/${month}/${year} ${time}`;
+      return `${day}/${month}/${year} ${time}`;
+    },
+    sendMsg(event) {
       const newMessage = {
-        date: fullDate,
+        date: this.getDataNow(),
         message: event.target.elements["new-msg"].value,
         status: "sent",
       };
-      this.contacts[this.currentUserId].messages.push(newMessage);
+      this.contacts[this.currentUserIndex].messages.push(newMessage);
       event.target.reset();
+      this.sendResponse(this.currentUserIndex);
+    },
+    response() {
+      const newResponse = {
+        date: this.getDataNow(),
+        message: "Ok",
+        status: "received",
+      };
+      this.contacts[this.userResponseIndex].messages.push(newResponse);
+    },
+    sendResponse() {
+      this.userResponseIndex = this.currentUserIndex
+      this.intervallo = setTimeout(this.response, 1000);
     },
   },
 }).mount("#app");
