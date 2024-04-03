@@ -94,11 +94,11 @@
 
                 </div>
             </section>
-            <form class="new-message flex align-center">
+            <form @submit.prevent="sendMsg," class="new-message flex align-center">
 
-                <button class="bt-style1"><i class="fa-regular fa-face-smile"></i></button>
-                <input type="text" placeholder="Scrivi messaggio">
-                <button class="bt-style1"><i class="fa-solid fa-microphone"></i></button>
+                <button type="button" class="bt-style1"><i class="fa-regular fa-face-smile"></i></button>
+                <input type="text" name="new-msg" placeholder="Scrivi messaggio">
+                <button type="button" class="bt-style1"><i class="fa-solid fa-microphone"></i></button>
 
             </form>
         </main>

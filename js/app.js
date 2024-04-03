@@ -166,10 +166,24 @@ createApp({
           ],
         },
       ],
-      currentUserId:0
+      currentUserId: 0,
     };
   },
   methods: {
-    
+    sendMsg(event) {
+      const d = new Date();
+      const day = String(d.getDate()).padStart(2, "0");
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      const year = String(d.getFullYear());
+      const time = d.toLocaleTimeString();
+      const fullDate = `${day}/${month}/${year} ${time}`;
+      const newMessage = {
+        date: fullDate,
+        message: event.target.elements["new-msg"].value,
+        status: "sent",
+      };
+      this.contacts[this.currentUserId].messages.push(newMessage);
+      event.target.reset();
+    },
   },
 }).mount("#app");
