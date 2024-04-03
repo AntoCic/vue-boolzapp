@@ -87,8 +87,9 @@
             <section class="message-box">
                 <div class="message-body flex flex-column">
 
-                    <div v-for="message in contacts[currentUserIndex].messages"
+                    <div v-for="(message, i) in contacts[currentUserIndex].messages"
                         :class="message.status === 'sent' ? 'my-msg' : 'current-user-msg'" class="max-col-8 msg">
+                        <button @click="contacts[currentUserIndex].messages.splice(i, 1)" type="button" class="angle-btn"> &blacktriangledown; </button>
                         <p>
                             {{ message.message }}
                         </p>

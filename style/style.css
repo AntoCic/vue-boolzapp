@@ -249,6 +249,7 @@ main .card .card-content {
   background-image: url(../img/mine.jpg);
   height: 100%;
   padding: 20px;
+  
 }
 
 .msg {
@@ -256,6 +257,7 @@ main .card .card-content {
   padding: 15px;
   border-radius: 15px;
   margin: 4px;
+  position: relative;
 }
 
 .msg p:last-child{
@@ -275,6 +277,15 @@ main .card .card-content {
 .my-msg + .current-user-msg,
 .current-user-msg + .my-msg {
   margin-top: 15px;
+}
+
+.angle-btn{
+  background-color: transparent; 
+  border: none; 
+  font-size: 1.5em; 
+  position: absolute;
+  right: 2px;
+  top: 2px;
 }
 
 .new-message {
