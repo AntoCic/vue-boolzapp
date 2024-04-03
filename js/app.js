@@ -169,6 +169,7 @@ createApp({
       currentUserIndex: 0,
       userResponseIndex: 0,
       intervallo: null,
+      inputSearch: "",
     };
   },
   methods: {
@@ -199,8 +200,30 @@ createApp({
       this.contacts[this.userResponseIndex].messages.push(newResponse);
     },
     sendResponse() {
-      this.userResponseIndex = this.currentUserIndex
+      this.userResponseIndex = this.currentUserIndex;
       this.intervallo = setTimeout(this.response, 1000);
+    },
+    getDataLastMsg(i = this.currentUserIndex) {
+      const indexLastMsg = this.contacts[i].messages.length - 1;
+      return this.contacts[i].messages[indexLastMsg]["date"].slice(11, 16);
+    },
+    getLastMsg(i = this.currentUserIndex) {
+      const indexLastMsg = this.contacts[i].messages.length - 1;
+      let lastMsg = this.contacts[i].messages[indexLastMsg]["message"];
+      if (lastMsg.length > 28) {
+        lastMsg = lastMsg.slice(0, 24) + "...";
+      }
+      return lastMsg;
+    },
+    checkSearch(i) {
+      if (this.inputSearch !== "") {
+        console.log(this.contacts[i].name);
+        if (this.contacts[i].name.toLowerCase().includes(this.inputSearch)) {
+          return true;
+        }
+        return false;
+      }
+      return true;
     },
   },
 }).mount("#app");

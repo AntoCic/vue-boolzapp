@@ -43,24 +43,26 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <div class="card-side">
-                    <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                    <input v-model="inputSearch" type="text" id="search" placeholder="Cerca o inizia una nuova chat">
                 </div>
             </form>
 
             <section class="contact">
-                
-                <div v-for="(contact, i) in contacts" @click="currentUserIndex = i" class="user card">
-                    <div class="card-img">
-                        <img :src="contact.avatar" alt="avatar-icon">
-                    </div>
-                    <div class="card-content">
-                        <p> {{ contact.name }} </p>
-                        <p>Lorem ipsum dolor sit amet.</p>
 
-                    </div>
-                    <div class="card-side">
-                        <p>16:15</p>
-                    </div>
+                <div v-for="(contact, i) in contacts" @click="currentUserIndex = i" class="user card">
+                    <template v-if="checkSearch(i)">
+                        <div class="card-img">
+                            <img :src="contact.avatar" alt="avatar-icon">
+                        </div>
+                        <div class="card-content">
+                            <p> {{ contact.name }} </p>
+                            <p> {{ getLastMsg(i) }} </p>
+
+                        </div>
+                        <div class="card-side">
+                            <p>{{ getDataLastMsg(i) }}</p>
+                        </div>
+                    </template>
                 </div>
 
             </section>
@@ -69,11 +71,11 @@
         <main class="flex flex-column">
             <section class="head card">
                 <div class="card-img">
-                    <img src="./img/avatar_1.jpg" alt="">
+                    <img :src="contacts[currentUserIndex].avatar" alt="avatar-icon">
                 </div>
                 <div class="card-content">
-                    <p>Michele</p>
-                    <p>Ultimo accesso oggi alle 16:15</p>
+                    <p>{{ contacts[currentUserIndex].name }}</p>
+                    <p>Ultimo accesso oggi alle {{ getDataLastMsg() }} </p>
                 </div>
                 <menu class="card-side">
                     <li><i class="fa-solid fa-magnifying-glass"></i></li>
@@ -85,7 +87,8 @@
             <section class="message-box">
                 <div class="message-body flex flex-column">
 
-                    <div v-for="message in contacts[currentUserIndex].messages" :class="message.status === 'sent' ? 'my-msg' : 'current-user-msg'" class="max-col-8 msg">
+                    <div v-for="message in contacts[currentUserIndex].messages"
+                        :class="message.status === 'sent' ? 'my-msg' : 'current-user-msg'" class="max-col-8 msg">
                         <p>
                             {{ message.message }}
                         </p>
