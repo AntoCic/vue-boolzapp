@@ -317,6 +317,9 @@ aside {
   align-self: flex-start;
   padding: 20px 15px;
 }
+.user_active{
+background-color: #eeeeee;
+}
 
 /* MAIN */
 main {

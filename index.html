@@ -49,7 +49,7 @@
 
             <section class="contact">
 
-                <div v-for="(contact, i) in contacts" @click="currentUserIndex = i" class="user card">
+                <div v-for="(contact, i) in contacts" @click="currentUserIndex = i" class="user card" :class="{user_active: i === currentUserIndex}">
                     <template v-if="checkSearch(i)">
                         <div class="card-img">
                             <img :src="contact.avatar" alt="avatar-icon">
