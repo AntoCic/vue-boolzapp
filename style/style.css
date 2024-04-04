@@ -33,12 +33,9 @@ input {
 /************************************************
     UTILITIES
  ************************************************/
-/* LAYOUT */
-/* .container {
-  margin: 0 auto;
-  max-width: calc(1000px + var(--gutter));
-  padding: var(--gutter);
-} */
+.d-none {
+  display: none;
+}
 
 .row {
   display: flex;
@@ -149,6 +146,98 @@ input {
   font-size: 26px;
   color: #b1b1b1;
 }
+/* dropdown */
+/* .ms_dropdown {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+
+.ms_dropdown label {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.ms_dropdown-content {
+  background-color: white;
+  display: none;
+  position: absolute;
+  padding: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 25px;
+}
+
+.ms_dropdown-content li {
+  border-radius: 3px;
+  margin-bottom: 1px;
+  display: block;
+  padding: 6px;
+  width: max-content;
+  cursor: pointer;
+}
+
+.ms_dropdown input:checked + .ms_dropdown-content {
+  display: block;
+}
+.my-msg .ms_dropdown input:checked + .ms_dropdown-content {
+  right: 0;
+}
+
+.ms_dropdown-content li:hover {
+  color: #afafaf;
+}
+.ms_dropdown:hover label {
+  right: 0;
+  top: 0;
+  color: #afafaf;
+} */
+.ms_dropdown {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+}
+
+.ms_dropdown .btn-msg {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.ms_dropdown-content {
+  background-color: white;
+  display: none;
+  position: absolute;
+  padding: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 25px;
+}
+
+.ms_dropdown-content li {
+  margin-bottom: 1px;
+  display: block;
+  padding: 6px;
+  width: max-content;
+  cursor: pointer;
+}
+
+.ms_dropdown:hover .ms_dropdown-content {
+  display: block;
+}
+.my-msg .ms_dropdown:hover .ms_dropdown-content {
+  right: 0;
+}
+
+.ms_dropdown-content li:hover {
+  color: #afafaf;
+}
+.ms_dropdown:hover .btn-msg {
+  color: #afafaf;
+}
 
 /*************************************************
     GENERAL STYLES
@@ -249,7 +338,6 @@ main .card .card-content {
   background-image: url(../img/mine.jpg);
   height: 100%;
   padding: 20px;
-  
 }
 
 .msg {
@@ -260,7 +348,7 @@ main .card .card-content {
   position: relative;
 }
 
-.msg p:last-child{
+.msg p:last-child {
   color: #b1b1b1;
   text-align: end;
   font-size: 0.9em;
@@ -277,15 +365,6 @@ main .card .card-content {
 .my-msg + .current-user-msg,
 .current-user-msg + .my-msg {
   margin-top: 15px;
-}
-
-.angle-btn{
-  background-color: transparent; 
-  border: none; 
-  font-size: 1.5em; 
-  position: absolute;
-  right: 2px;
-  top: 2px;
 }
 
 .new-message {
