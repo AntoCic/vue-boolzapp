@@ -71,10 +71,10 @@
         <main class="flex flex-column">
             <section class="head card">
                 <div class="card-img">
-                    <img :src="contacts[currentUserIndex].avatar" alt="avatar-icon">
+                    <img :src="currentContact.avatar" alt="avatar-icon">
                 </div>
                 <div class="card-content">
-                    <p>{{ contacts[currentUserIndex].name }}</p>
+                    <p>{{ currentContact.name }}</p>
                     <p>Ultimo accesso oggi alle {{ getDataLastMsg() }} </p>
                 </div>
                 <menu class="card-side">
@@ -87,14 +87,14 @@
             <section class="message-box">
                 <div class="message-body flex flex-column">
 
-                    <div v-for="(message, i) in contacts[currentUserIndex].messages"
+                    <div v-for="(message, i) in currentContact.messages"
                         :class="message.status === 'sent' ? 'my-msg' : 'current-user-msg'" class="max-col-8 msg">
                      
                         <div class="ms_dropdown">
                             <button type="button" class="btn-msg">&blacktriangledown;</button>
                             <ul class="ms_dropdown-content">
-                                <li @click="contacts[currentUserIndex].messages.splice(i, 1)">Elimina messaggio</li>
                                 <li>Info messaggio</li>
+                                <li @click="currentContact.messages.splice(i, 1)">Elimina messaggio</li>
                             </ul>
                         </div>
                         <p>

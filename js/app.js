@@ -187,7 +187,7 @@ createApp({
         message: event.target.elements["new-msg"].value,
         status: "sent",
       };
-      this.contacts[this.currentUserIndex].messages.push(newMessage);
+      this.currentContact.messages.push(newMessage);
       event.target.reset();
       this.sendResponse(this.currentUserIndex);
     },
@@ -224,6 +224,11 @@ createApp({
         return false;
       }
       return true;
+    },
+  },
+  computed: {
+    currentContact: function() {
+      return this.contacts[this.currentUserIndex];
     },
   },
 }).mount("#app");
